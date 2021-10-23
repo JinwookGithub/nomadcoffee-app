@@ -1,5 +1,10 @@
 import React from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import {
+	Keyboard,
+	KeyboardAvoidingView,
+	Platform,
+	TouchableWithoutFeedback,
+} from "react-native";
 import styled from "styled-components/native";
 
 const Container = styled.View`
@@ -36,7 +41,10 @@ export default function AuthLayout({ children }) {
 					behavior="position"
 					keyboardVerticalOffset={Platform.OS === "ios" ? 50 : 0}
 				>
-					<Logo resizeMode="contain" source={require("../assets/logo.png")} />
+					<Logo
+						resizeMode="contain"
+						source={require("../../assets/logo.png")}
+					/>
 					{children}
 				</KeyboardAvoidingView>
 			</Container>

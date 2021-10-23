@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import React, { useEffect } from "react";
 import styled from "styled-components/native";
 import { UserAvatar } from "../components/user/UserAvatar";
-import AuthButton from "../components/AuthButton";
+import AuthButton from "../components/auth/AuthButton";
 import { logUserOut } from "../apollo";
 
 const SEE_PROFILE_QUERY = gql`

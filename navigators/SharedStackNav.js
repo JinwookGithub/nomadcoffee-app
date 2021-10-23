@@ -1,10 +1,10 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../screens/Home";
 import Search from "../screens/Search";
 import Profile from "../screens/Profile";
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function SharedStackNav({ screenName }) {
 	return (

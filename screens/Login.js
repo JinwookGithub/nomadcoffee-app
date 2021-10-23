@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
-import AuthLayout from "../components/AuthLayout";
-import AuthButton from "../components/AuthButton";
-import { TextInput } from "../components/AuthShared";
+import AuthLayout from "../components/auth/AuthLayout";
+import AuthButton from "../components/auth/AuthButton";
+import { TextInput } from "../components/auth/AuthShared";
 import React from "react";
 import { gql, useMutation } from "@apollo/client";
 import { logUserIn } from "../apollo";
@@ -24,6 +24,7 @@ export default function Login() {
 		const {
 			login: { ok, token, error },
 		} = data;
+		console.log(data);
 		if (ok && token) {
 			await logUserIn(token);
 		}
@@ -37,6 +38,7 @@ export default function Login() {
 	};
 	const onValid = (data) => {
 		if (!loading) {
+			console.log(data);
 			logInMutation({
 				variables: { ...data },
 			});

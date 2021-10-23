@@ -10,7 +10,7 @@ export default function TabNav({ isLoggedIn }) {
 	return (
 		<Tabs.Navigator
 			tabBarOptions={{
-				activeTintColor: "white",
+				activeTintColor: "black",
 				showLabel: false,
 				style: {
 					borderTopColor: "rgba(255, 255, 255, 0.3)",
