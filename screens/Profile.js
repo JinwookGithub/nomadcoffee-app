@@ -35,7 +35,7 @@ const Layout = styled.View`
 	flex: 1;
 `;
 
-export default function Profile() {
+export default function Profile({ username }) {
 	const { data } = useQuery(SEE_PROFILE_QUERY, {
 		variables: { username },
 	});

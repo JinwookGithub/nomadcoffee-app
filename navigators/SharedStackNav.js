@@ -3,10 +3,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../screens/Home";
 import Search from "../screens/Search";
 import Profile from "../screens/Profile";
+import checkMe from "../hooks/checkMe";
 
 const Stack = createNativeStackNavigator();
 
 export default function SharedStackNav({ screenName }) {
+	const { data } = checkMe();
 	return (
 		<Stack.Navigator
 			headerMode="screen"
@@ -27,7 +29,9 @@ export default function SharedStackNav({ screenName }) {
 				<Stack.Screen name={"Search"} component={Search} />
 			) : null}
 			{screenName === "Profile" ? (
-				<Stack.Screen name={"Profile"}>{() => <Profile />}</Stack.Screen>
+				<Stack.Screen name={"Profile"}>
+					{() => <Profile username={data?.me?.username} />}
+				</Stack.Screen>
 			) : null}
 		</Stack.Navigator>
 	);

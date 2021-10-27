@@ -24,7 +24,7 @@ export const logUserOut = async () => {
 };
 
 const httpLink = createHttpLink({
-	uri: "http://localhost:5000/graphql",
+	uri: "https://nomadcoffee-backend-byjjw.herokuapp.com/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -38,6 +38,25 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
 	link: authLink.concat(httpLink),
-	cache: new InMemoryCache(),
+	cache: new InMemoryCache({
+		typePolicies: {
+			Query: {
+				fields: {
+					seeCoffeeShops: {
+						keyArgs: false,
+						merge(existing = [], incoming = []) {
+							return {
+								...incoming,
+								coffeeShops: [
+									...(existing.coffeeShops || []),
+									...incoming.coffeeShops,
+								],
+							};
+						},
+					},
+				},
+			},
+		},
+	}),
 });
 export default client;
