@@ -4,6 +4,7 @@ import Home from "../screens/Home";
 import Search from "../screens/Search";
 import Profile from "../screens/Profile";
 import checkMe from "../hooks/checkMe";
+import CoffeeShop from "../screens/CoffeeShop";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,7 @@ export default function SharedStackNav({ screenName }) {
 					{() => <Profile username={data?.me?.username} />}
 				</Stack.Screen>
 			) : null}
+			<Stack.Screen name={"CoffeeShop"} component={CoffeeShop} />
 		</Stack.Navigator>
 	);
 }
